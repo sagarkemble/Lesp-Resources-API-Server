@@ -10,13 +10,11 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-// Use in-memory storage for faster uploads
 const upload = multer({
   storage: multer.memoryStorage(),
   limits: { fileSize: 20 * 1024 * 1024 }, // 20MB
 });
 
-// OAuth2 setup
 const oauth2Client = new google.auth.OAuth2(
   process.env.GOOGLE_CLIENT_ID,
   process.env.GOOGLE_CLIENT_SECRET,
@@ -68,7 +66,7 @@ async function resolveFolderPath(pathString, rootFolderId) {
   return currentFolderId;
 }
 
-// Upload endpoint using memory storage
+// Upload route
 app.post("/upload", upload.single("file"), async (req, res) => {
   try {
     if (!req.file || !req.body.path) {
@@ -113,7 +111,7 @@ app.post("/upload", upload.single("file"), async (req, res) => {
   }
 });
 
-// Delete file from Google Drive
+// Delete route
 app.post("/delete", async (req, res) => {
   try {
     const { id } = req.body;
@@ -135,7 +133,6 @@ app.post("/delete", async (req, res) => {
   }
 });
 
-// Export for Vercel
 if (process.env.VERCEL) {
   module.exports = app;
 } else {
