@@ -1,6 +1,6 @@
-# LESP Resources - File Upload/Delete Server (Google Drive API)
+# LESP Resources Google Drive API for file upload/delete using Oauth 2 client
 
-This is a Node.js backend server for the **LESP Resources LMS**. It handles file uploads/delete and stores them in Google Drive under dynamically created folders.Files are uploaded via HTTP requests and shared via public links.
+This is a Node.js api for the **LESP Resources LMS**. It handles file uploads/delete and stores them in Google Drive under dynamically created folders.
 
 ---
 
@@ -19,6 +19,6 @@ This is a Node.js backend server for the **LESP Resources LMS**. It handles file
 - Express
 - Multer (file uploads)
 - Google Drive OAuth API (v3)
-- Render for backend hosting  
+- Vercel serverless functions  
 
 
