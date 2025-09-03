@@ -6,8 +6,17 @@ const { google } = require("googleapis");
 require("dotenv").config();
 
 const app = express();
-
-app.use(cors());
+app.use(
+  cors({
+    origin: [
+      "https://www.lespresources.in",
+      "http://localhost:5173",
+      "http://localhost:4173",
+    ],
+    methods: ["GET", "POST", "PUT", "DELETE"],
+    credentials: true,
+  })
+);
 app.use(express.json());
 
 const upload = multer({
